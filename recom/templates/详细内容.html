@@ -1,0 +1,378 @@
+{% extends 'muban.html' %}
+{% load static %}
+{% block index %}
+
+    <div class="row" style="margin-top: 80px">
+    <div class="col-3">
+<script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var url = decodeURI(location.search);
+
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+             var str = url.substr(1);
+             strs = str.split("&");
+         for (var i = 0; i < strs.length; i++) {
+             theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+         }
+     }
+        {#console.log(theRequest.policy)#}
+            $.ajax({
+            type:'GET',
+            url: 'api',
+            dataType:'json',
+            data:{
+                policy:theRequest.policy
+            },
+            success:function (data){
+                console.log(data);
+                console.log(data.title)
+                var a;
+                a='<div class="col-7">';
+                a+='<a href="#" style="text-decoration: none;color: black;font-size: 20px">';
+                a+='<strong>';
+                a+= data.title+'asdfadsf<br></strong>';
+                a+='</strong>';
+                a+='</p>';
+                a+='<a  style="text-decoration: none;color: black;font-size: 10px;top: 100px">';
+                a+='<span>出版单位：发表日期<br></span>';
+                a+='</a>';
+                a+='</div>'
+                a+='<div style="margin-top: 20px">';
+                a+='<a href="#" style="text-decoration: none;color: black">';
+                a+='<p style="font-size: 20px">';
+                a+='<strong>关键词：</strong>';
+                a+='</p>';
+                a+='<div style="font-size: 10px">';
+                a+='<button style="outline: none;background: white;border-width: 1px;">';
+                a+='关键词1:社会科学计算';
+                a+=' </button>';
+                a+='<button style="outline: none;background: white;border-width: 1px;margin-left: 10px">';
+                a+='关键词1';
+                a+='</button>';
+                a+='<button style="outline: none;background: white;border-width: 1px;margin-left: 10px">';
+                a+='关键词1';
+                a+='</button>';
+                a+='<button style="outline: none;background: white;border-width: 1px;margin-left: 10px">';
+                a+='关键词1';
+                a+='</button>';
+                a+='<button style="outline: none;background: white;border-width: 1px;margin-left: 10px">';
+                a+='关键词1';
+                a+='</button>';
+                a+='</div>';
+                a+='</a>';
+                a+='</div>';
+                a+='<p style="margin-top: 20px">';
+                a+='<p style="font-size: 20px">';
+                a+='<strong>摘要：</strong>';
+                a+='<div class="text" style="font-size: 10px;color: rgba(0,0,0,0.72)">';
+                a+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.abstract;
+                a+='</div>';
+                a+='<div style="margin-top: 20px">';
+                a+='<p style="font-size: 20px"><strong>正文：</strong></p>';
+                a+='<div class="card">';
+                a+='<div class="card-body">';
+                a+='<div class="card-title">';
+                a+='<p align="center" style="font-size: 20px">';
+                a+='<strong>';
+                a+=data.title;
+                a+='</strong>';
+                a+='</p>';
+                a+='</div>';
+                a+='<div class="card-text" style="font-size: 10px">';
+                a+='<p align="right" style="margin-right: 30px">';
+                a+= ''+data.release_source+'';
+                a+='</p>';
+                a+='<div class="text">';
+                a+='<p style="font-size: 15px;font-family: 黑体,serif">';
+                a+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.details;
+                a+='</p>';
+                a+=' </div>';
+                a+='<button class="btn btn-primary btn-sm">附件下载</button>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='<div class="card" style="margin-top: 20px">';
+                a+='<div class="card-header" style="background:#51449E;color: white ">';
+                a+='相关政策';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+=' <div class="card-text">';
+                a+='<div class="card">';
+                a+='<div class="card-body" style="border: none">';
+                a+='<div class="card-title" style="margin-left: 20px;font-size: 20px">';
+                a+='<span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>';
+                a+=' </div>';
+                a+='<div class="card-body">';
+                a+='<span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会';
+                a+='精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素';
+                a+='向企业集聚，推动我市民</span>';
+                a+='</div>';
+                a+=' </div>';
+                a+='</div>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<div class="card-text">';
+                a+='<div class="card">';
+                a+='<div class="card-body" style="border: none">';
+                a+='<div class="card-title" style="margin-left: 20px;font-size: 20px">';
+                a+='<span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会';
+                a+='精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素';
+                a+='向企业集聚，推动我市民</span>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<div class="card-text">';
+                a+='<div class="card">';
+                a+='<div class="card-body" style="border: none">';
+                a+='<div class="card-title" style="margin-left: 20px;font-size: 20px">';
+                a+='<span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会';
+                a+='精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素';
+                a+='向企业集聚，推动我市民</span>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<div class="card-text">';
+                a+='<div class="card">';
+                a+='<div class="card-body" style="border: none">';
+                a+='<div class="card-title" style="margin-left: 20px;font-size: 20px">';
+                a+='<span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会';
+                a+='精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素';
+                a+='向企业集聚，推动我市民</span>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<div class="card-text">';
+                a+='<div class="card">';
+                a+='<div class="card-body" style="border: none">';
+                a+='<div class="card-title" style="margin-left: 20px;font-size: 20px">';
+                a+='<span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>';
+                a+='</div>';
+                a+='<div class="card-body">';
+                a+='<span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会';
+                a+='精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素';
+                a+='向企业集聚，推动我市民</span>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                a+='</div>';
+                $("#feng").append(a);
+            },
+            error:function (data){
+                console.log('error'+data);
+            }
+        })
+
+    </script>
+        <div class="card" style="margin-left: 40px">
+            <div class="card-header" style="background: #00936B;color: white">
+                联系图谱
+            </div>
+            <div class="card-body">
+                <img src="{% static 'img/政策图谱测试1.jpg' %}" alt="图谱" style="width: 100%" >
+                <img src="{% static 'img/政策图谱测试1.jpg' %}" alt="图谱" style="width: 100%;margin-top: 10px">
+                <img src="{% static 'img/政策图谱测试1.jpg' %}" alt="图谱" style="width: 100%;margin-top: 10px">
+                <img src="{% static 'img/政策图谱测试1.jpg' %}" alt="图谱" style="width: 100%;margin-top: 10px">
+            </div>
+        </div>
+    </div>
+    <div class="col-7" id="feng">
+{#        <a href="#" style="text-decoration: none;color: black;font-size: 20px">#}
+{#            <strong>#}
+{#                晋城市关于组织申报2021年省级小微企业创业创新基地及省级小微企业创业创新示范基地的通知<br></strong>#}
+{#        </a>#}
+{#        <div>#}
+{#            <a  style="text-decoration: none;color: black;font-size: 10px;top: 100px">#}
+{#                <span>出版单位：发表日期<br></span>#}
+{#            </a>#}
+{#        </div>#}
+{#        <div style="margin-top: 20px">#}
+{#            <a href="#" style="text-decoration: none;color: black">#}
+{#                <p style="font-size: 20px">#}
+{#                    <strong>关键词：</strong>#}
+{#                </p>#}
+{#                <div style="font-size: 10px">#}
+{#                    <button style="outline: none;background: white;border-width: 1px;">#}
+{#                        关键词1:社会科学计算#}
+{#                    </button>#}
+{#                    <button style="outline: none;background: white;border-width: 1px;margin-left: 10px">#}
+{#                        关键词1#}
+{#                    </button>#}
+{#                    <button style="outline: none;background: white;border-width: 1px;margin-left: 10px">#}
+{#                        关键词1#}
+{#                    </button>#}
+{#                    <button style="outline: none;background: white;border-width: 1px;margin-left: 10px">#}
+{#                        关键词1#}
+{#                    </button>#}
+{#                    <button style="outline: none;background: white;border-width: 1px;margin-left: 10px">#}
+{#                        关键词1#}
+{#                    </button>#}
+{#                </div>#}
+{##}
+{#            </a>#}
+{#        </div>#}
+{#        <p style="margin-top: 20px">#}
+{#            <p style="font-size: 20px">#}
+{#                <strong>摘要：</strong>#}
+{#                <div class="text" style="font-size: 10px;color: rgba(0,0,0,0.72)">#}
+{#                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会精神，着力打造民营企业创新生态小气#}
+{#                    候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素向企业集聚，推动我市民#}
+{#                </div>#}
+{#        <div style="margin-top: 20px">#}
+{#            <p style="font-size: 20px"><strong>正文：</strong></p>#}
+{#            <div class="card">#}
+{#                <div class="card-body">#}
+{#                    <div class="card-title">#}
+{#                        <p align="center" style="font-size: 20px">#}
+{#                            <strong>#}
+{#                                晋城市关于组织申报2021年省级小微企业创业创新基地及省级小微企业创业创新示范基地的通知#}
+{#                            </strong>#}
+{#                        </p>#}
+{#                    </div>#}
+{#                    <div class="card-text" style="font-size: 10px">#}
+{#                        <p align="right" style="margin-right: 30px">#}
+{#                            晋城市中小企业发展促进中心#}
+{#                        </p>#}
+{#                        <div class="text">#}
+{#                            <p style="font-size: 15px;font-family: 黑体,serif">#}
+{#                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为推动我市小微企业创业创新基地发展，根据《关于进一步规范和完善市级小微企业创业创新基地建设工作的通知》#}
+{#                                （晋市企发〔2019〕66号）和《关于开展2020年市级小微企业创业创新基地申报认定工作的通知》（晋市企发〔2020〕63#}
+{#                                号）精神，经企业自主申报、各县级中小企业管理部门初审推荐、市中小企业发展促进中心组织专家评审和实地核查、中心#}
+{#                                党组会议研究，拟认定陵川县扶贫双创基地等7家双创基地为“2020年晋城市小微企业创业创新基地”，现予公示。　　#}
+{#                                公示 日期：2020年10月13日至10月21日。公示期间，如对公示内容有异议，可在公示有效期内以电话、电子邮件或书面材料形#}
+{#                                式向市中小企业发展促进中心反映。反映情况要实事求是，客观公正。单位意见必须加盖单位公章并注明联系方式，个人意#}
+{#                                见必须注明真实姓名、身份证号码和联系方式。#}
+{#                                电话：6996223、6996295#}
+{#                                邮箱：jczxj314@126.com#}
+{#                                附件：拟认定2020年晋城市小微企业“双创”基地名单2020年10月13日#}
+{#                            </p>#}
+{#                        </div>#}
+{#                        <button class="btn btn-primary btn-sm">附件下载</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="card" style="margin-top: 20px">#}
+{#            <div class="card-header" style="background:#51449E;color: white ">#}
+{#                相关政策#}
+{#            </div>#}
+{#            <div class="card-body">#}
+{#                    <div class="card-text">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body" style="border: none">#}
+{#                                <div class="card-title" style="margin-left: 20px;font-size: 20px">#}
+{#                                    <span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>#}
+{#                                </div>#}
+{#                                <div class="card-body">#}
+{#                                    <span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会#}
+{#                                        精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素#}
+{#                                        向企业集聚，推动我市民</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            <div class="card-body">#}
+{#                    <div class="card-text">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body" style="border: none">#}
+{#                                <div class="card-title" style="margin-left: 20px;font-size: 20px">#}
+{#                                    <span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>#}
+{#                                </div>#}
+{#                                <div class="card-body">#}
+{#                                    <span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会#}
+{#                                        精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素#}
+{#                                        向企业集聚，推动我市民</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            <div class="card-body">#}
+{#                    <div class="card-text">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body" style="border: none">#}
+{#                                <div class="card-title" style="margin-left: 20px;font-size: 20px">#}
+{#                                    <span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>#}
+{#                                </div>#}
+{#                                <div class="card-body">#}
+{#                                    <span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会#}
+{#                                        精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素#}
+{#                                        向企业集聚，推动我市民</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            <div class="card-body">#}
+{#                    <div class="card-text">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body" style="border: none">#}
+{#                                <div class="card-title" style="margin-left: 20px;font-size: 20px">#}
+{#                                    <span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>#}
+{#                                </div>#}
+{#                                <div class="card-body">#}
+{#                                    <span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会#}
+{#                                        精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素#}
+{#                                        向企业集聚，推动我市民</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            <div class="card-body">#}
+{#                    <div class="card-text">#}
+{#                        <div class="card">#}
+{#                            <div class="card-body" style="border: none">#}
+{#                                <div class="card-title" style="margin-left: 20px;font-size: 20px">#}
+{#                                    <span><strong>关于征集企业技术需求开展与上海专家对接活动的通知</strong></span>#}
+{#                                </div>#}
+{#                                <div class="card-body">#}
+{#                                    <span style="font-size: 13px">&ensp;&ensp;&ensp;&ensp;各县（市、区）、开发区中小企业主管部门，各相关企业： 为贯彻落实全市民营经济发展推进会#}
+{#                                        精神，着力打造民营企业创新生态小气候，切实帮助企业解决生产研发过程中的技术难题，引导创新要素#}
+{#                                        向企业集聚，推动我市民</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#        </div>#}
+    </div>
+    <div class="col-2">
+        <div class="card">
+            <div class="card-body" >
+                <p align="center">
+                    <img src="{% static 'img/客服.png' %}" alt="客服" width="40px">
+                </p>
+                <p align="center">想了解更多信息<br>请联系我们</p>
+                <p align="center">
+                    <button type="button" class="btn btn-success">联系我们</button>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
