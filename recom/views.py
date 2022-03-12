@@ -173,7 +173,7 @@ def kw_company(request):
     # print(kws)
     length = len(kws)
     if length == 1:
-        sql = 'select * from company where concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[0] + "%'"
+        sql = 'select * from company where concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[0] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -184,7 +184,7 @@ def kw_company(request):
 
     if length == 2:
         sql = 'select * from company where concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[0] + "%'" + \
-              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[1] + "%'"
+              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[1] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -196,7 +196,7 @@ def kw_company(request):
     elif length == 3:
         sql = 'select * from company where concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[0] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[1] + "%'" + \
-              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[2] + "%'"
+              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[2] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -209,7 +209,7 @@ def kw_company(request):
         sql = 'select * from company where concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[0] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[1] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[2] + "%'" + \
-              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[3] + "%'"
+              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[3] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -223,7 +223,7 @@ def kw_company(request):
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[1] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[2] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[3] + "%'" + \
-              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[4] + "%'"
+              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[4] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -239,7 +239,7 @@ def kw_company(request):
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[2] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[3] + "%'" + \
               'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[4] + "%'" + \
-              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[5] + "%'"
+              'and concat(name,legal_person,address,phone,scope,industry) like ' + "'%" + kws[5] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -259,7 +259,8 @@ def kw_policy(request):
     length = len(kws)
 
     if length == 1:
-        sql = 'select * from policy where concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[0] + "%'"
+        sql = 'select * from policy where concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[0] + "%'" + \
+              'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -271,7 +272,7 @@ def kw_policy(request):
     if length == 2:
         sql = 'select * from policy where concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + \
               kws[0] + "%'" + \
-              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[1] + "%'"
+              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[1] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -283,7 +284,7 @@ def kw_policy(request):
     if length == 3:
         sql = 'select * from policy where concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[0] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[1] + "%'" + \
-              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[2] + "%'"
+              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[2] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -297,7 +298,7 @@ def kw_policy(request):
               kws[0] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[1] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[2] + "%'" + \
-              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[3] + "%'"
+              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[3] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -312,7 +313,7 @@ def kw_policy(request):
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[1] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[2] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[3] + "%'" + \
-              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[4] + "%'"
+              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[4] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -328,7 +329,7 @@ def kw_policy(request):
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[2] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[3] + "%'" + \
               'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[4] + "%'" + \
-              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[5] + "%'"
+              'and concat(title,department,release_source,prefecture_city,details,key_words) like ' + "'%" + kws[5] + "%'" + 'limit 20'
 
         print(sql)
         cursor.execute(sql)
@@ -563,8 +564,28 @@ def search_water_conservancy(self):
     result = cursor.fetchall()
     # print (type(result[0]))
     print(result)
-    # return HttpResponse(json.dumps(result[0]))
     return HttpResponse(json.dumps(result))
+    # return JsonResponse(result[0])
+
+
+# 返回图片给前端
+# 点击企业名称跳转出现政策图谱表
+def pic(request):
+    name = request.GET.get('name',None)
+    sql = 'select number from company where name = ' +'"' + name + '"'
+    print(sql)
+    cursor.execute(sql)
+    con_engine.commit()
+    number = cursor.fetchall()
+    # print(number[0])
+    # print(number[0]['number'])
+    file = open('D:/科研/recom_system/recom/picture/'+ str(number[0]['number']) +'.png','rb')
+
+    # file = open('D:\科研/recom_system/recom\picture/0.png','rb')
+    response = HttpResponse(content=file.read(), content_type='image/jpeg')
+
+    return response
+
 
 
 def index(request):
@@ -572,7 +593,6 @@ def index(request):
 
 
 def form(request):
-    num = request.GET.get('number', None)
     return render(request, '搜索界面.html')
 
 
