@@ -142,26 +142,27 @@ def recom_policy(request):
     # print(number[0]['number'])  #拿到企业的编号
 
     num = number[0]['number']
-    with open('D:/科研/recom_system/recom/curd/工作簿1.csv', 'r') as f:
-        reader = csv.reader(f)
-        list = [row[num + 1] for row in reader]  # row[x]中的x代表第几列，即企业标号（number），不过实际上row[3]代表2号企业
-    # print(list)  #list为政策推荐得分的列表，
-    tmp_list = copy.deepcopy(list)
-    tmp_list.sort()
-    max_index = [list.index(one) for one in tmp_list[::-1][:11]]
-    # print(max_index)  #max_index为得分最高的政策的number排序列表 max_index[1]为第1政策的number，共10哥政策，最后一个编号为max_index[10]
-    sql = 'select * from policy where number = ' + str(max_index[1]) + ' or ' + 'number = ' + str(max_index[2]) + ' or ' + 'number = ' + str(max_index[3]) + \
-          ' or ' + 'number = ' + str(max_index[4]) + ' or ' + 'number = ' + str(max_index[5]) + ' or ' + 'number = ' + str(max_index[6]) + \
-          ' or ' + 'number = ' + str(max_index[7]) + ' or ' + 'number = ' + str(max_index[8]) + \
-          ' or ' + 'number = ' + str(max_index[9]) + ' or ' + 'number = ' + str(max_index[10])
+    # print(num)
+    line = linecache.getline("D:\科研/recom_system/recom/recom/result.csv",num+1)
+    # print(line)
+    list1 = line.split(",")
+    # print(list1)
 
-    # print(sql)
+    min_index = [index for index,value in sorted(list(enumerate(list1)),key = lambda x:x[1])]  #政策编号倒序列表
+    # print(min_index)
+    max_index = list(reversed(min_index))
+    # print(max_index)  # max_index为得分最高的政策的number排序列表 max_index[1]为第1政策number为max_index[1]-1，共10个政策，最后一个政策number为max_index[10]-1
+
+    sql = 'select * from policy where number = ' + str(max_index[1]-1) + ' or ' + 'number = ' + str(max_index[2]-1) + ' or ' + 'number = ' + str(max_index[3]-1) + \
+          ' or ' + 'number = ' + str(max_index[4]-1) + ' or ' + 'number = ' + str(max_index[5]-1) + ' or ' + 'number = ' + str(max_index[6]-1) + \
+          ' or ' + 'number = ' + str(max_index[7]-1) + ' or ' + 'number = ' + str(max_index[8]-1) + \
+          ' or ' + 'number = ' + str(max_index[9]-1) + ' or ' + 'number = ' + str(max_index[10]-1)
+
+    print(sql)
     cursor.execute(sql)
     con_engine.commit()
     result = cursor.fetchall()
     # print(result)
-
-    return HttpResponse(json.dumps(result))
 
 
 # 查询带有关键字的企业（最多支持6个关键词）
